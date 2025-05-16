@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Celebration - Namrata </title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main>
+    <!-- Section 1: Welcome Splash - The Digital Bloom -->
+    <section id="section1" class="section welcome-section" role="region" aria-labelledby="welcome-heading">
+      <div class="flower-container" aria-label="Growing digital flower animation" role="img" tabindex="0">
+        <svg id="digital-flower" viewBox="0 0 200 200" aria-hidden="true" >
+          <g class="stem">
+            <rect x="95" y="90" width="10" height="60" fill="#6a4fff" />
+          </g>
+          <g class="petals">
+            <path class="petal petal1" d="M100 90 Q120 40 140 90 T100 90" fill="#b76eff" />
+            <path class="petal petal2" d="M100 90 Q80 40 60 90 T100 90" fill="#b76eff" />
+            <path class="petal petal3" d="M100 90 Q130 70 160 110 T100 90" fill="#b76eff" />
+            <path class="petal petal4" d="M100 90 Q70 70 40 110 T100 90" fill="#b76eff" />
+            <path class="petal petal5" d="M100 90 Q110 120 140 130 T100 90" fill="#b76eff" />
+            <path class="petal petal6" d="M100 90 Q90 120 60 130 T100 90" fill="#b76eff" />
+          </g>
+          <circle class="center" cx="100" cy="90" r="15" fill="#6a4fff" />
+        </svg>
+      </div>
+      <h1 id="welcome-heading" class="welcome-heading">A Very Happy Birthday,  Namrata!</h1>
+      <button onclick="window.location.href='memories.html'" class="btn next-btn" aria-label="Go to Memories" id="btn-memories">Next</button>
+      <button onclick="window.location.href='reflect-yourself.html'" class="btn" aria-label="Reflect Yourself" id="btn-reflect">Reflect Yourself</button>
+    </section>
+  </main>
+  <script src="effects.js"></script>
+  <script src="interactive-background.js"></script>
+  <audio id="background-audio" src="song.mp3" autoplay loop controls style="display:none;"></audio>
+</body>
+</html>

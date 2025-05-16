@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reflect Yourself - Random Memories</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="reflect-yourself.css" />
+</head>
+<body class="reflect-yourself">
+  <div id="media-container" aria-live="polite" aria-label="Reflect Yourself slideshow">
+    <!-- Media will be displayed here -->
+  </div>
+  <div class="nav-buttons">
+    <button class="btn" aria-label="Back to Home" onclick="window.location.href='index.html'">Back</button>
+    <button class="btn" aria-label="Next to Memories" onclick="window.location.href='memories.html'">Next</button>
+  </div>
+
+  <script>
+    const defaultMediaList = [
+      { type: 'image', src: '1.jpg', alt: 'Memorable moment 1' },
+      { type: 'image', src: '2.jpg', alt: 'Memorable moment 2' },
+      { type: 'image', src: '3.jpg', alt: 'Memorable moment 3' },
+      { type: 'video', src: '4.mp4', alt: 'Memorable moment 4' },
+      { type: 'video', src: '5.mp4', alt: 'Memorable moment 5' },
+      { type: 'video', src: '6.mp4', alt: 'Memorable moment 6' },
+      { type: 'video', src: '7.mp4', alt: 'Memorable moment 7' },
+      { type: 'image', src: '8.jpg', alt: 'Memorable moment 8' },
+      { type: 'image', src: '9.jpg', alt: 'Memorable moment 9' },
+      { type: 'image', src: '11.jpg', alt: 'Memorable moment 11' },
+      { type: 'video', src: '10.mp4', alt: 'Memorable moment 10' },
+      { type: 'video', src: '12.mp4', alt: 'Memorable moment 12' },
+      { type: 'video', src: '13.mp4', alt: 'Memorable moment 13' }
+    ];
+
+    const container = document.getElementById('media-container');
+    let currentIndex = -1;
+    let imageTimeout;
+
+    function getMediaList() {
+      const stored = localStorage.getItem('mediaList');
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch {
+          return defaultMediaList;
+        }
+      }
+      return defaultMediaList;
+    }
+
+    function fadeOutIn(callback) {
+      container.classList.add('fade-out');
+      setTimeout(() => {
+        callback();
+        container.classList.remove('fade-out');
+      }, 1000);
+    }
+
+    function showMedia(index) {
+      const mediaList = getMediaList();
+      const media = mediaList[index];
+      fadeOutIn(() => {
+        container.innerHTML = '';
+
+        if (media.type === 'image') {
+          const img = document.createElement('img');
+          img.src = media.src;
+          img.alt = media.alt;
+          container.appendChild(img);
+
+          // Change image after 5 seconds
+          imageTimeout = setTimeout(showRandomMedia, 5000);
+        } else if (media.type === 'video') {
+          const video = document.createElement('video');
+          video.src = media.src;
+          video.controls = true;
+          video.autoplay = true;
+          video.muted = true;
+          video.setAttribute('aria-label', media.alt);
+          container.appendChild(video);
+
+          // Change media after video ends
+          video.addEventListener('ended', showRandomMedia);
+        }
+      });
+    }
+
+    function showRandomMedia() {
+      clearTimeout(imageTimeout);
+      const mediaList = getMediaList();
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * mediaList.length);
+      } while (nextIndex === currentIndex);
+      currentIndex = nextIndex;
+      showMedia(currentIndex);
+    }
+
+    // Start slideshow
+    showRandomMedia();
+  </script>
+  <audio id="background-audio" src="song.mp3" autoplay loop muted controls style="display:none;"></audio>
+  <script src="effects.js"></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+/* General styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #53354a);
+  background-size: 400% 400%;
+  animation: gradientShift 30s ease infinite;
+  color: #eee;
+  position: relative;
+  min-height: 100vh;
+  line-height: 1.6;
+  font-size: 16px;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+.side-next {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  background-color: #6a4fff;
+  color: white;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  transform: translateY(-50%) translateX(110%);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  z-index: 10000;
+}
+
+.side-next:hover {
+  background-color: #b76eff;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Rest of existing styles */
+
+.section {
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+h1:hover, h2:hover {
+  color: #b76eff;
+  cursor: default;
+}
+
+.btn {
+  background: linear-gradient(135deg, #b76eff, #6a4fff);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  display: inline-block;
+  min-width: 140px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  box-shadow: 0 8px 20px rgba(183, 110, 255, 0.8);
+  user-select: none;
+}
+
+.btn:hover, .btn:focus {
+  background: linear-gradient(135deg, #6a4fff, #b76eff);
+  box-shadow: 0 12px 30px rgba(106, 79, 255, 1);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 15px rgba(183, 110, 255, 0.7);
+}
+
+/* Flower container */
+.flower-container {
+  margin: 0 auto 30px;
+  width: 220px;
+  height: 220px;
+  position: relative;
+  max-width: 90vw;
+  filter: drop-shadow(0 0 10px #b76eff);
+  transition: filter 0.3s ease;
+}
+
+.flower-container:hover {
+  filter: drop-shadow(0 0 20px #6a4fff);
+}
+
+svg#digital-flower {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease;
+  filter: drop-shadow(0 0 5px #b76eff);
+}
+
+/* Petal animations */
+.petal {
+  transform-origin: 100px 90px;
+  animation: petal-sway 5s ease-in-out infinite;
+  transition: fill 0.3s ease;
+}
+
+.petal1 { animation-delay: 0s; }
+.petal2 { animation-delay: 0.6s; }
+.petal3 { animation-delay: 1.2s; }
+.petal4 { animation-delay: 1.8s; }
+.petal5 { animation-delay: 2.4s; }
+.petal6 { animation-delay: 3s; }
+
+@keyframes petal-sway {
+  0%, 100% { transform: rotate(0deg); fill: #b76eff; }
+  50% { transform: rotate(12deg); fill: #9a5fff; }
+}
+
+/* Center circle color pulse */
+.center {
+  animation: center-pulse 6s ease-in-out infinite;
+  transition: fill 0.3s ease;
+}
+
+@keyframes center-pulse {
+  0%, 100% { fill: #6a4fff; }
+  50% { fill: #8a6fff; }
+}
+
+/* Heartfelt message */
+.heartfelt-message {
+  font-size: 1.4rem;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  opacity: 0;
+  transition: opacity 2s ease;
+  padding: 0 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #eee;
+}
+
+/* Voice note info */
+.voice-note-info {
+  font-style: italic;
+  margin-top: 20px;
+  color: #ccc;
+  padding: 0 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Final wish */
+.final-wish {
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 1.3rem;
+  color: #b76eff;
+  padding: 0 10px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 12px rgba(183, 110, 255, 0.9);
+}
+
+.mic-icon, .heart-icon {
+  font-size: 1.3rem;
+  vertical-align: middle;
+}
+
+/* Animations */
+.animate-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 8px #b76eff;
+  }
+  to {
+    box-shadow: 0 0 25px #6a4fff;
+  }
+}
+
+/* Background overlay vignette */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
+  z-index: 5;
+  transition: background 0.5s ease;
+}
+
+/* Gallery grid for memories.html */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.gallery-item:focus,
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.gallery-item video {
+  background: #000;
+}
+
+/* Nav buttons container */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    min-width: 120px;
+  }
+  .section {
+    padding: 30px 15px;
+  }
+  .nav-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .flower-container {
+    width: 180px;
+    height: 180px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  .section {
+    padding: 20px 10px;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    min-width: 80px;
+  }
+  .section {
+    padding: 15px 8px;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
